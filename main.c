@@ -17,7 +17,6 @@ static void open_file(GtkWidget * widget,GtkWidget* scw){
     char* pfilename=g_file_get_basename(file);
     if(g_file_replace_contents (file, text, strlen(text), NULL, FALSE, G_FILE_CREATE_NONE, NULL, NULL, &err)){
         gtk_scrolled_window_set_min_content_height(GTK_SCROLLED_WINDOW(scw),10);
-        gtk_scrolled_window_set_max_content_width(GTK_SCROLLED_WINDOW(scw),10);
         GtkAlertDialog* dialog= gtk_alert_dialog_new("File Saved.\n");
         gtk_alert_dialog_show(dialog,NULL);      
         gtk_text_buffer_set_text (tb, pfilename, strlen(pfilename));
@@ -49,6 +48,7 @@ static void open_file(GtkWidget * widget,GtkWidget* scw){
       if(f=fopen(text,"w")){
             fclose(f);
             file=g_file_new_for_path(text);
+            gtk_scrolled_window_set_min_content_height(GTK_SCROLLED_WINDOW(scw),700);
             gtk_text_buffer_set_text (tb, "", 0);
             opened=1;
             gtk_button_set_label(GTK_BUTTON(widget),"Close");
@@ -75,15 +75,12 @@ static void activate(GtkApplication * app){
   GtkWidget *scw;
   
   window=gtk_application_window_new(app);
-  gtk_window_set_title(GTK_WINDOW(window),"New App");
+  gtk_window_set_title(GTK_WINDOW(window),"Text Editor");
   gtk_window_set_default_size(GTK_WINDOW(window) ,800,600);
   box=gtk_box_new(GTK_ORIENTATION_VERTICAL,5);
   gtk_window_set_child(GTK_WINDOW(window),box);
   scw=gtk_scrolled_window_new();
   gtk_scrolled_window_set_min_content_height(GTK_SCROLLED_WINDOW(scw),10);
-  gtk_scrolled_window_set_max_content_width(GTK_SCROLLED_WINDOW(scw),10);
-  gtk_scrolled_window_set_min_content_width(GTK_SCROLLED_WINDOW(scw),10);
-
   button=gtk_button_new_with_label("Open File");
   
 
