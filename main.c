@@ -61,6 +61,7 @@ static void open_file(GtkWidget * widget,GtkWidget* tv){
 
 
 }
+
 static void activate(GtkApplication * app){
   GtkWidget* window;
   GtkWidget* button;
