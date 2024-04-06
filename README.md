@@ -1,2 +1,5 @@
 # minimal Text Editior
-    ## Simple GUI Text Editor in C with [GTK4](https://www.gtk.org/)
+## Simple GUI Text Editor in C with [GTK4](https://www.gtk.org/)
+
+# Build
+`make` 
